@@ -1,0 +1,12 @@
+{
+  "name": "ofertasdecredito",
+  "version": "1.0.0",
+  "description": "Projeto de ofertas de crédito - Mercado Livre",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'Build complete'"
+  },
+  "keywords": ["cartao", "credito", "mercadolivre"],
+  "author": "",
+  "license": "ISC"
+}

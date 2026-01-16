@@ -1,0 +1,81 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Build complete'",
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/cartao.html"
+    },
+    {
+      "src": "/cartao",
+      "dest": "/cartao.html"
+    },
+    {
+      "src": "/importancia",
+      "dest": "/importancia.html"
+    },
+    {
+      "src": "/conta-digital",
+      "dest": "/conta-digital.html"
+    },
+    {
+      "src": "/form",
+      "dest": "/form.html"
+    },
+    {
+      "src": "/redirect1",
+      "dest": "/redirect1.html"
+    },
+    {
+      "src": "/redirect2",
+      "dest": "/redirect2.html"
+    },
+    {
+      "src": "/personalize",
+      "dest": "/personalize.html"
+    },
+    {
+      "src": "/brinde",
+      "dest": "/brinde.html"
+    },
+    {
+      "src": "/obrigado",
+      "dest": "/obrigado.html"
+    },
+    {
+      "src": "/endereco",
+      "dest": "/endereco.html"
+    },
+    {
+      "src": "/envio",
+      "dest": "/envio.html"
+    },
+    {
+      "src": "/taxa-de-envio",
+      "dest": "/taxa-de-envio.html"
+    },
+    {
+      "src": "/aprovado",
+      "dest": "/aprovado.html"
+    },
+    {
+      "src": "/adesao",
+      "dest": "/adesao.html"
+    },
+    {
+      "src": "/termos",
+      "dest": "/termos.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

